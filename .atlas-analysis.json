@@ -1,0 +1,69 @@
+{
+  "projectType": "frontend",
+  "projectName": "Arda",
+  "projectDescription": "A dark gothic AMOLED theme for Obsidian with medieval aesthetics, burgundy accents, and ornamental styling",
+  "theme": "willow",
+  "primaryColor": "#8b2d3e",
+  "lightColor": "#c08497",
+  "darkColor": "#4a141d",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Get Started",
+        "pages": [
+          "introduction",
+          "installation"
+        ]
+      },
+      {
+        "group": "Features",
+        "pages": [
+          "features/overview",
+          "features/typography",
+          "features/colors",
+          "features/animations",
+          "features/ui-elements"
+        ]
+      },
+      {
+        "group": "Customization",
+        "pages": [
+          "customization/css-variables",
+          "customization/color-system",
+          "customization/fonts"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "reference/components",
+          "reference/styling-guide"
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "OLED-friendly true black backgrounds",
+    "Burgundy palette with warm parchment tones",
+    "Serif typography with small-caps headings",
+    "UI animations for hover states and modals",
+    "Ornamental styling with medieval decorative elements",
+    "Custom checkboxes with sword icons",
+    "Stone-etched table designs",
+    "Image framing with 3D hover effects"
+  ],
+  "publicApiSurface": [
+    "--accent-h, --accent-s, --accent-l",
+    "--background-primary, --background-secondary",
+    "--text-normal, --text-accent",
+    "--interactive-accent, --interactive-accent-hover",
+    "--h1-color through --h6-color",
+    "--font-text, --font-interface, --font-monospace",
+    "--callout-* variables",
+    "--table-* variables",
+    "--code-* variables",
+    "Custom animations: fadeInScaleUp, popIn, slideRightGlow",
+    "Diamond list markers (rotate(45deg) transform)",
+    "Sword checkbox markers (⚔ U+2694)"
+  ]
+}
