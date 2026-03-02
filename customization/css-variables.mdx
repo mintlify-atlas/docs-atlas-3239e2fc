@@ -1,0 +1,199 @@
+---
+title: "CSS variables"
+description: "Complete reference of customizable CSS variables"
+---
+
+Arda provides a comprehensive set of CSS variables that you can override to customize the theme's appearance without modifying the theme files directly.
+
+## Layout
+
+Control the width and spacing of your content area:
+
+```css
+body.theme-dark {
+  --file-line-width: 720px;  /* Maximum width of the reading area */
+  --file-margins: 2.5em;     /* Side margins for content */
+}
+```
+
+**Example: Wider reading area**
+```css
+body.theme-dark {
+  --file-line-width: 900px;
+  --file-margins: 3em;
+}
+```
+
+## Borders and Radius
+
+Customize the roundness of various UI elements:
+
+```css
+body {
+  --button-radius: 2px;
+  --checkbox-radius: 0px;
+  --modal-radius: 6px;
+  --tag-radius: 2px;
+  --callout-radius: 4px;
+  --tab-radius: 4px;
+  --input-radius: 2px;
+  --toggle-radius: 2px;
+  --slider-thumb-radius: 2px;
+  --clickable-icon-radius: 4px;
+}
+```
+
+**Example: Rounded UI**
+```css
+body {
+  --button-radius: 8px;
+  --checkbox-radius: 4px;
+  --modal-radius: 12px;
+  --tag-radius: 12px;
+  --callout-radius: 8px;
+}
+```
+
+## Lists
+
+Control the appearance of lists:
+
+```css
+body {
+  --list-bullet-size: 5px;                /* Size of bullet points */
+  --list-bullet-radius: 0px;              /* Roundness of bullets */
+  --list-bullet-transform: rotate(45deg); /* Rotation for diamond shape */
+  --list-spacing: 0.25em;                 /* Spacing between list items */
+  --list-indent: 2em;                     /* Indentation for nested lists */
+}
+```
+
+**Example: Round bullets with more spacing**
+```css
+body {
+  --list-bullet-size: 6px;
+  --list-bullet-radius: 50%; /* Makes bullets circular */
+  --list-bullet-transform: none;
+  --list-spacing: 0.5em;
+  --list-indent: 2.5em;
+}
+```
+
+## Input Elements
+
+Customize form inputs and controls:
+
+```css
+body {
+  --input-height: 32px;           /* Height of input fields */
+  --input-radius: 2px;            /* Border radius of inputs */
+  --toggle-radius: 2px;           /* Border radius of toggle switches */
+  --slider-thumb-radius: 2px;     /* Border radius of slider thumbs */
+  --slider-thumb-height: 20px;    /* Height of slider thumb */
+  --slider-thumb-width: 12px;     /* Width of slider thumb */
+}
+```
+
+## Indentation Guides
+
+Control the appearance of indentation guides in your notes:
+
+```css
+body {
+  --indentation-guide-width: 1px;
+}
+```
+
+## Popover and Modal Windows
+
+Customize popup windows and popovers:
+
+```css
+body {
+  --popover-width: 450px;        /* Width of popover windows */
+  --popover-max-height: 500px;   /* Maximum height of popovers */
+  --popover-font-size: 0.92em;   /* Font size in popovers */
+  --modal-radius: 6px;           /* Border radius of modals */
+}
+```
+
+## Blockquotes
+
+Customize the appearance of blockquotes:
+
+```css
+.theme-dark {
+  --blockquote-border-color: #6e3030;
+  --blockquote-border-thickness: 3px;
+  --blockquote-background-color: rgba(120, 70, 35, 0.07);
+  --blockquote-font-style: italic;
+  --blockquote-color: #c9c2a5;
+}
+```
+
+## Horizontal Rules
+
+Customize divider lines:
+
+```css
+.theme-dark {
+  --hr-color: #8b2d3e;    /* Color of horizontal rules */
+  --hr-thickness: 1px;    /* Thickness of horizontal rules */
+}
+```
+
+## Checkboxes
+
+Control task list checkbox appearance:
+
+```css
+.theme-dark {
+  --checkbox-radius: 0px;                     /* Border radius */
+  --checkbox-color: #8b2d3e;                  /* Background when checked */
+  --checkbox-color-hover: #a53d4f;            /* Background on hover */
+  --checkbox-border-color: #3d2d26;           /* Border color */
+  --checkbox-border-color-hover: #8b2d3e;     /* Border color on hover */
+  --checkbox-marker-color: #ddd7be;           /* Checkmark color */
+}
+```
+
+## Dividers
+
+Customize pane dividers:
+
+```css
+.theme-dark {
+  --divider-color: #1e1610;         /* Default divider color */
+  --divider-color-hover: #6e3030;   /* Divider color on hover */
+  --divider-width: 1px;             /* Width of dividers */
+}
+```
+
+## Complete Example
+
+Here's a complete example that creates a softer, more rounded variant:
+
+```css
+body.theme-dark {
+  /* Layout */
+  --file-line-width: 800px;
+  --file-margins: 3em;
+  
+  /* Rounded corners everywhere */
+  --button-radius: 8px;
+  --checkbox-radius: 3px;
+  --modal-radius: 12px;
+  --tag-radius: 16px;
+  --callout-radius: 8px;
+  --input-radius: 6px;
+  
+  /* More spacious lists */
+  --list-spacing: 0.4em;
+  --list-indent: 2.5em;
+  --list-bullet-size: 6px;
+  --list-bullet-radius: 50%;
+  
+  /* Larger inputs */
+  --input-height: 36px;
+}
+```

@@ -1,0 +1,142 @@
+---
+title: Color palette
+description: Burgundy and parchment color system
+---
+
+Arda's color system is built around OLED black backgrounds, burgundy accents, and warm parchment text.
+
+## OLED black backgrounds
+
+True black backgrounds for optimal OLED display:
+
+```css
+--background-primary: #000000;           /* Pure black */
+--background-primary-alt: #060402;       /* Subtle brown-black */
+--background-secondary: #080604;         /* Dark brown-black */
+--background-secondary-alt: #0c0907;     /* Lighter brown-black */
+```
+
+## Burgundy accents
+
+The core accent color system:
+
+```css
+/* HSL values */
+--accent-h: 349;    /* Burgundy hue */
+--accent-s: 51%;    /* Saturation */
+--accent-l: 36%;    /* Lightness */
+
+/* Accent colors */
+--interactive-accent: #8b2d3e;         /* Primary burgundy */
+--interactive-accent-hover: #a53d4f;   /* Lighter on hover */
+--text-accent: #c08497;                /* Rose accent */
+--text-accent-hover: #e0a4b7;          /* Light rose hover */
+```
+
+## Parchment text colors
+
+Warm, readable text colors:
+
+```css
+--text-normal: #ddd7be;    /* Warm parchment */
+--text-muted: #8a7e72;     /* Muted tan */
+--text-faint: #56483e;     /* Dark tan */
+--text-on-accent: #ddd7be; /* Text on burgundy */
+```
+
+## Color base scale
+
+A progressive scale from black to parchment:
+
+```css
+--color-base-00: #000000;   /* Pure black */
+--color-base-05: #020201;   /* Near black */
+--color-base-10: #080604;   /* Very dark brown */
+--color-base-20: #100c08;   /* Dark brown */
+--color-base-25: #16110c;   /* Brown shadow */
+--color-base-30: #1e1610;   /* Medium-dark brown */
+--color-base-35: #28201a;   /* Medium brown */
+--color-base-40: #3d2d26;   /* Warm brown */
+--color-base-50: #56483e;   /* Tan brown */
+--color-base-60: #8a7e72;   /* Light tan */
+--color-base-70: #a89e8f;   /* Pale tan */
+--color-base-100: #dcd6bc;  /* Warm parchment */
+```
+
+## Border colors
+
+```css
+--background-modifier-border: #2e2218;         /* Default border */
+--background-modifier-border-hover: #4a3628;   /* Hover state */
+--background-modifier-border-focus: #8b2d3e;   /* Focus state (burgundy) */
+```
+
+## Syntax highlighting
+
+Parchment ledger-inspired code colors:
+
+```css
+--code-background: #0c0906;      /* Dark brown */
+--code-normal: #c9c2a5;          /* Parchment */
+--code-comment: #5a5a4a;         /* Muted olive */
+--code-function: #c08497;        /* Rose */
+--code-important: #e0a4b7;       /* Light rose */
+--code-keyword: #8b2d3e;         /* Burgundy */
+--code-operator: #8e8e8e;        /* Gray */
+--code-property: #a06575;        /* Deep rose */
+--code-punctuation: #5a5a4a;     /* Muted olive */
+--code-string: #9a7a5a;          /* Tan */
+--code-tag: #b07585;             /* Medium rose */
+--code-value: #906070;           /* Mauve */
+```
+
+## Interactive colors
+
+```css
+--interactive-normal: #100c08;   /* Normal state */
+--interactive-hover: #1e1610;    /* Hover state */
+```
+
+## Heading colors
+
+Gradient from light rose to burgundy:
+
+```css
+--h1-color: #c08497;  /* Light rose */
+--h2-color: #c08497;
+--h3-color: #b07585;  /* Medium rose */
+--h4-color: #a06575;
+--h5-color: #906070;  /* Deep rose */
+--h6-color: #806060;  /* Burgundy */
+```
+
+## Special element colors
+
+### Blockquotes
+```css
+--blockquote-border-color: #6e3030;
+--blockquote-background-color: rgba(120, 70, 35, 0.07);
+--blockquote-color: #c9c2a5;
+```
+
+### Horizontal rules
+```css
+--hr-color: #8b2d3e;  /* Burgundy */
+```
+
+### Tags
+```css
+--tag-color: #c08497;
+--tag-color-hover: #e0a4b7;
+--tag-background: rgba(120, 70, 35, 0.12);
+--tag-background-hover: rgba(139, 45, 62, 0.18);
+```
+
+### Links
+```css
+--link-color: #c08497;
+--link-color-hover: #e0a4b7;
+--link-unresolved-color: #806060;
+--link-external-color: #a06575;
+--link-external-color-hover: #c08497;
+```

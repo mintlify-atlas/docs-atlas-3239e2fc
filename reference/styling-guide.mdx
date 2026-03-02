@@ -1,0 +1,461 @@
+---
+title: Styling guide
+description: Design patterns and styling conventions
+---
+
+This guide documents the design philosophy, patterns, and conventions used throughout the Arda theme. Use this as a reference when extending or customizing the theme.
+
+## Medieval Aesthetic Approach
+
+Arda is built around a **dark gothic medieval aesthetic** with these core principles:
+
+### Color Philosophy
+
+- **True black OLED backgrounds** (`#000000`) for optimal display on OLED screens
+- **Warm parchment tones** for text (`#ddd7be`, `#c9c2a5`)
+- **Burgundy accents** as the primary interactive color (`#8b2d3e`, `#c08497`)
+- **Warm undertones** throughout (browns, ambers, dark reds)
+
+```css
+--background-primary: #000000; /* OLED true black */
+--text-normal: #ddd7be; /* Warm parchment */
+--interactive-accent: #8b2d3e; /* Deep burgundy */
+--text-accent: #c08497; /* Rose accent */
+```
+
+### Typography
+
+**Serif fonts** evoke manuscript aesthetics:
+
+```css
+--font-interface: "Palatino Linotype", "Book Antiqua", "Palatino", serif;
+--font-text: "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
+--font-monospace: "Courier New", monospace;
+```
+
+**Heading hierarchy** uses graduated burgundy tones:
+
+```css
+--h1-color: #c08497; /* Lightest */
+--h2-color: #c08497;
+--h3-color: #b07585;
+--h4-color: #a06575;
+--h5-color: #906070;
+--h6-color: #806060; /* Darkest */
+```
+
+### Shape Language
+
+- **Minimal border radius** (2-4px) for sharp, etched edges
+- **Diamond shapes** via 45-degree rotation (checkboxes, list markers)
+- **Hard shadows** instead of soft blurs for depth
+
+```css
+--button-radius: 2px;
+--checkbox-radius: 0px;
+--modal-radius: 6px;
+--list-bullet-transform: rotate(45deg);
+```
+
+## Ornamental Decoration Usage
+
+Arda uses **Unicode symbols** to add medieval flourishes without external assets.
+
+### Symbol Reference
+
+| Symbol | Unicode | Usage | Location |
+|--------|---------|-------|----------|
+| ⚔ | `\2694` | Checkbox marker | `.task-list-item-checkbox:checked::after` |
+| ♦ | `\2666` | HR separator center | `hr::after` |
+| ✦ | `\2766` | Workspace corners | `.workspace-split::before/after` |
+| ✧ | `\2042` | Metadata separator | `.metadata-container::before` |
+| ✧ | `\2042` | Footnote separator | `.footnotes::before` |
+| ✧ | `\2767` | Embed decoration | `.internal-embed::before` |
+| ↗ | `\2197` | External link marker | `.external-link::after` |
+
+### Example: HR Diamond Decoration
+
+```css
+hr::after {
+  content: "\2666"; /* Diamond ♦ */
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--background-primary);
+  padding: 0 15px;
+  color: var(--interactive-accent);
+  font-size: 1.2em;
+}
+```
+
+### Example: Sword Checkbox
+
+```css
+.task-list-item-checkbox:checked::after {
+  content: "\2694"; /* Crossed swords ⚔ */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  color: var(--checkbox-marker-color);
+  font-size: 11px;
+}
+```
+
+## Animation Philosophy
+
+Theme animations follow three distinct timing curves:
+
+### Animation Curves
+
+```css
+--anim-lively: 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+--anim-smooth: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+--anim-cinematic: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+```
+
+**When to use each:**
+
+- **Lively** (`0.25s` with bounce): Small UI elements (icons, tags, checkboxes)
+- **Smooth** (`0.3s` eased): Medium interactions (links, navigation, tabs)
+- **Cinematic** (`0.5s` slow ease-out): Large elements (modals, callouts, images)
+
+### Animation Principles
+
+1. **Micro-interactions matter** - Even small hover states get animations
+2. **Directional consistency** - Elements slide/scale in predictable directions
+3. **Performance-first** - Use `transform` and `opacity` only, avoid layout thrashing
+4. **`will-change` optimization** - Applied to animated elements
+
+```css
+button.mod-cta {
+  transition: all var(--anim-smooth);
+  will-change: transform, box-shadow;
+}
+```
+
+### Key Animation Patterns
+
+**3D button press:**
+```css
+button.mod-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 6px 16px rgba(139, 45, 62, 0.25), 2px 2px 0px #000;
+}
+
+button.mod-cta:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 1px 1px 0px #000;
+}
+```
+
+**Slide-right navigation:**
+```css
+.nav-file-title:hover {
+  transform: translateX(6px);
+  box-shadow: inset 2px 0 0 var(--interactive-accent-hover);
+}
+```
+
+**Scale-up with lift:**
+```css
+.markdown-rendered img:hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.8);
+}
+```
+
+## Border and Shadow Patterns
+
+### Border Strategy
+
+**Left accent borders** denote special content:
+
+```css
+/* Code blocks */
+border-left: 3px solid rgba(110, 48, 48, 0.6);
+
+/* Callouts (dynamic color) */
+border-left: 3px solid rgba(var(--callout-color), 0.5);
+
+/* Blockquotes */
+border-left: var(--blockquote-border-thickness) solid var(--blockquote-border-color);
+```
+
+**Subtle all-around borders** for containers:
+
+```css
+border: 1px solid var(--background-modifier-border);
+```
+
+### Shadow Strategy
+
+**Hard shadows** for buttons (medieval embossed look):
+
+```css
+box-shadow: 2px 2px 0px #000;
+```
+
+**Layered soft shadows** for elevation:
+
+```css
+box-shadow:
+  0 32px 64px rgba(0, 0, 0, 0.9), /* Deep shadow */
+  0 0 0 1px var(--modal-border-color), /* Border */
+  0 0 40px rgba(139, 45, 62, 0.1); /* Accent glow */
+```
+
+**Inset shadows** for recessed elements:
+
+```css
+box-shadow: inset 0 0 8px rgba(120, 70, 35, 0.05);
+```
+
+## Gradient Techniques
+
+### Linear Gradients for Depth
+
+**Button gradients** (top to bottom):
+
+```css
+background: linear-gradient(to bottom, var(--interactive-accent), #4a141d);
+```
+
+**Fade-out gradients** (callout accents):
+
+```css
+background: linear-gradient(
+  to right,
+  rgba(var(--callout-color), 0.25),
+  transparent 70%
+);
+```
+
+**HR separator gradients:**
+
+```css
+background: linear-gradient(
+  to right,
+  transparent,
+  var(--interactive-accent),
+  transparent
+);
+```
+
+### Background Overlays
+
+**Sidebar pattern overlay:**
+
+```css
+background-image:
+  linear-gradient(rgba(6, 4, 2, 0.94), rgba(6, 4, 2, 0.94)),
+  url('data:image/svg+xml;utf8,<svg>...</svg>');
+background-size:
+  auto,
+  40px 40px;
+```
+
+## OLED Optimization Approach
+
+### True Black Foundation
+
+```css
+--color-base-00: #000000; /* Pure black for OLED */
+--background-primary: #000000;
+```
+
+### Controlled Brightness Steps
+
+Incremental color steps prevent jarring contrast:
+
+```css
+--color-base-00: #000000; /* OLED black */
+--color-base-05: #020201; /* Near black */
+--color-base-10: #080604; /* Very dark brown */
+--color-base-20: #100c08; /* Dark brown */
+--color-base-25: #16110c;
+--color-base-30: #1e1610;
+/* ... continues to ... */
+--color-base-100: #dcd6bc; /* Warm parchment */
+```
+
+### Transparent Overlays
+
+Use `rgba()` with warm tones instead of white/gray:
+
+```css
+/* Warm brown overlay instead of white */
+background: rgba(120, 70, 35, 0.12);
+
+/* Deep red overlay for accents */
+background: rgba(139, 45, 62, 0.18);
+```
+
+### OLED-Friendly Animations
+
+Avoid large white flashes; use colored glows:
+
+```css
+/* Burgundy glow instead of white */
+box-shadow: 0 0 20px rgba(139, 45, 62, 0.25);
+```
+
+## Best Practices for Extending the Theme
+
+### 1. Use CSS Variables
+
+**Always reference theme variables** instead of hardcoding values:
+
+```css
+/* Good */
+color: var(--text-accent);
+background: var(--interactive-accent);
+
+/* Avoid */
+color: #c08497;
+background: #8b2d3e;
+```
+
+### 2. Maintain Animation Consistency
+
+Use the three predefined animation curves:
+
+```css
+/* Good */
+transition: transform var(--anim-lively);
+
+/* Avoid */
+transition: transform 0.2s ease;
+```
+
+### 3. Follow Ornamental Patterns
+
+When adding decorations, use Unicode symbols positioned absolutely:
+
+```css
+.custom-element::before {
+  content: "\2042"; /* Use Unicode */
+  position: absolute;
+  color: var(--interactive-accent);
+  opacity: 0.2; /* Keep subtle */
+}
+```
+
+### 4. Respect the Color Palette
+
+Stick to warm browns, burgundies, and parchment tones:
+
+```css
+/* Theme-appropriate */
+background: rgba(120, 70, 35, 0.1); /* Warm brown */
+border-color: #6e3030; /* Deep burgundy */
+
+/* Off-theme */
+background: rgba(0, 120, 255, 0.1); /* Blue */
+border-color: #00ff00; /* Green */
+```
+
+### 5. Use Minimal Border Radius
+
+Keep edges sharp for the medieval aesthetic:
+
+```css
+border-radius: 2px; /* Sharp */
+border-radius: 4px; /* Acceptable for larger elements */
+border-radius: 16px; /* Avoid - too modern */
+```
+
+### 6. Add `will-change` for Performance
+
+For animated elements, optimize repaints:
+
+```css
+.animated-element {
+  will-change: transform, opacity;
+  transition: all var(--anim-smooth);
+}
+```
+
+### 7. Layer Shadows Thoughtfully
+
+Combine multiple shadows for depth:
+
+```css
+box-shadow:
+  0 8px 20px rgba(0, 0, 0, 0.6), /* Primary shadow */
+  0 0 1px var(--border-color), /* Edge definition */
+  0 0 12px rgba(139, 45, 62, 0.1); /* Accent glow */
+```
+
+## CSS Snippet Template
+
+Use this template when creating custom snippets:
+
+```css
+/* ============================================
+ * Custom Arda Extension: [Feature Name]
+ * Description: [What this does]
+ * ============================================ */
+
+/* Use theme variables */
+.your-custom-class {
+  /* Colors */
+  color: var(--text-normal);
+  background: var(--color-base-10);
+  border: 1px solid var(--background-modifier-border);
+  
+  /* Typography */
+  font-family: var(--font-interface-theme);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  
+  /* Animation */
+  transition: all var(--anim-smooth);
+  will-change: transform;
+  
+  /* Spacing */
+  padding: 12px 16px;
+  border-radius: 2px;
+}
+
+.your-custom-class:hover {
+  background: var(--interactive-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 45, 62, 0.15);
+}
+
+/* Optional decoration */
+.your-custom-class::before {
+  content: "\2042";
+  color: var(--interactive-accent);
+  opacity: 0.2;
+  margin-right: 8px;
+}
+```
+
+## License
+
+The Arda theme is released under the **MIT License**, which means:
+
+- ✅ Commercial use allowed
+- ✅ Modification allowed
+- ✅ Distribution allowed
+- ✅ Private use allowed
+- ⚠️ License and copyright notice required
+- ❌ No liability or warranty
+
+**When sharing modifications:**
+
+1. Include the original MIT License text
+2. Credit the original theme (Arda by RepRep666)
+3. Note what you've changed
+
+See the full [LICENSE](https://github.com/RepRep666/obsidian-arda/blob/main/LICENSE) for details.
+
+---
+
+**Further Reading:**
+
+- [Component Reference](/reference/components) - Detailed component CSS reference
+- [GitHub Repository](https://github.com/RepRep666/obsidian-arda) - Source code and issues

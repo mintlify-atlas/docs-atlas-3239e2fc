@@ -1,0 +1,359 @@
+---
+title: UI elements
+description: Styled components and ornamental elements
+---
+
+Arda features medieval-inspired ornamental elements and carefully styled UI components.
+
+## Ornamental flourishes
+
+### Corner decorations
+
+Rotated rosette characters (❧) in workspace corners:
+
+```css
+.workspace-split.mod-vertical.mod-root::before,
+.workspace-split.mod-vertical.mod-root::after {
+  content: "\2767";  /* ❧ */
+  position: absolute;
+  color: var(--interactive-accent);
+  opacity: 0.2;
+  font-size: 2em;
+  pointer-events: none;
+}
+
+.workspace-split.mod-vertical.mod-root::before {
+  top: 10px;
+  left: 10px;
+}
+
+.workspace-split.mod-vertical.mod-root::after {
+  bottom: 10px;
+  right: 10px;
+  transform: rotate(180deg);
+}
+```
+
+### Diamond dividers
+
+Horizontal rules with centered diamond (◆):
+
+```css
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--interactive-accent),
+    transparent
+  );
+  margin: 3em 0;
+}
+
+hr::after {
+  content: "\2666";  /* ◆ */
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--background-primary);
+  padding: 0 15px;
+  color: var(--interactive-accent);
+  font-size: 1.2em;
+}
+```
+
+### List bullet markers
+
+Diamond-shaped bullets:
+
+```css
+--list-bullet-size: 5px;
+--list-bullet-radius: 0px;         /* Square */
+--list-bullet-transform: rotate(45deg);  /* Rotated to diamond */
+--list-bullet-border: 1px solid #3d2d26;
+--list-marker-color: #6e3030;
+--list-marker-color-hover: #c08497;
+```
+
+### Asterism decorators
+
+Asterism (⁂) used in metadata containers:
+
+```css
+.metadata-container::before {
+  content: "\2042";  /* ⁂ */
+  display: block;
+  text-align: center;
+  color: var(--interactive-accent);
+  opacity: 0.18;
+  font-size: 0.9em;
+  margin-bottom: 6px;
+  letter-spacing: 0.5em;
+}
+```
+
+## Custom checkboxes
+
+### Sword icon checkboxes
+
+Rotated diamond checkboxes with crossed swords (⚔):
+
+```css
+.task-list-item-checkbox {
+  appearance: none;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  border: 1px solid var(--checkbox-border-color);
+  background-color: transparent;
+  transform: rotate(45deg);  /* Diamond shape */
+  margin-right: 10px;
+  transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
+}
+
+.task-list-item-checkbox:checked {
+  background-color: var(--checkbox-color);
+}
+
+.task-list-item-checkbox:checked::after {
+  content: "\2694";  /* ⚔ */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  color: var(--checkbox-marker-color);
+  font-size: 11px;
+}
+```
+
+Colors:
+
+```css
+--checkbox-color: #8b2d3e;
+--checkbox-color-hover: #a53d4f;
+--checkbox-border-color: #3d2d26;
+--checkbox-border-color-hover: #8b2d3e;
+--checkbox-marker-color: #ddd7be;
+--checkbox-radius: 0px;
+```
+
+## Callout styling
+
+### Design
+
+Warm note cards with gradients and borders:
+
+```css
+.callout {
+  border-left: 3px solid rgba(var(--callout-color), 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.callout::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(var(--callout-color), 0.25),
+    transparent 70%
+  );
+}
+
+.callout-title {
+  font-family: var(--font-interface-theme);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.85em;
+}
+```
+
+### Variables
+
+```css
+--callout-border-width: 1px;
+--callout-border-opacity: 0.45;
+--callout-title-weight: 600;
+--callout-content-background: rgba(14, 10, 7, 0.6);
+--callout-padding: 12px 16px;
+--callout-title-padding: 8px 12px;
+--callout-radius: 4px;
+```
+
+### Callout colors
+
+```css
+--callout-default: 139, 45, 62;    /* Burgundy */
+--callout-quote: 192, 132, 151;    /* Rose */
+--callout-tip: 139, 45, 62;        /* Burgundy */
+--callout-warning: 200, 150, 50;   /* Gold */
+--callout-error: 180, 40, 40;      /* Red */
+--callout-info: 100, 120, 140;     /* Blue-gray */
+--callout-success: 60, 120, 60;    /* Green */
+```
+
+## Table designs
+
+### Stone-etched aesthetic
+
+```css
+--table-background: rgba(8, 6, 4, 0.5);
+--table-border-color: #2e2218;
+--table-border-width: 1px;
+--table-header-background: rgba(120, 70, 35, 0.08);
+--table-header-border-color: #6e3030;
+--table-header-border-width: 1px;
+--table-header-font: var(--font-interface-theme);
+--table-header-weight: 600;
+--table-header-color: #c9a0a8;
+--table-text-color: var(--text-normal);
+--table-row-background-hover: rgba(120, 70, 35, 0.06);
+--table-row-alt-background: rgba(120, 70, 35, 0.025);
+```
+
+### Header styling
+
+Uppercase small-caps style:
+
+```css
+.markdown-rendered th {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85em;
+}
+
+.markdown-rendered thead {
+  border-bottom: 2px solid rgba(110, 48, 48, 0.5);
+}
+```
+
+## Image framing
+
+### 3D hover effects
+
+```css
+.markdown-rendered img:not(.emoji) {
+  border: 2px solid var(--background-modifier-border);
+  padding: 3px;
+  background: var(--color-base-10);
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  transition: all var(--anim-cinematic);
+}
+
+.markdown-rendered img:not(.emoji):hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(139, 45, 62, 0.25);
+  border-color: var(--interactive-accent);
+}
+```
+
+## Buttons
+
+### CTA button styling
+
+Gradient buttons with embossed effect:
+
+```css
+button.mod-cta {
+  background: linear-gradient(to bottom, var(--interactive-accent), #4a141d);
+  color: var(--text-normal);
+  border: 1px solid var(--color-base-30);
+  box-shadow: 2px 2px 0px #000;
+  font-family: var(--font-interface-theme);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button.mod-cta:hover {
+  background: var(--interactive-accent-hover);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000;
+}
+```
+
+Radius:
+
+```css
+--button-radius: 2px;
+```
+
+## Tags
+
+### Design
+
+```css
+.tag {
+  font-family: var(--font-interface-theme);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: var(--font-smallest);
+}
+```
+
+### Variables
+
+```css
+--tag-color: #c08497;
+--tag-color-hover: #e0a4b7;
+--tag-background: rgba(120, 70, 35, 0.12);
+--tag-background-hover: rgba(139, 45, 62, 0.18);
+--tag-border-color: #3d2d26;
+--tag-border-color-hover: #6e3030;
+--tag-border-width: 1px;
+--tag-padding-x: 10px;
+--tag-padding-y: 3px;
+--tag-weight: 500;
+--tag-radius: 2px;
+```
+
+## Embeds
+
+Internal embeds with rosette decorator:
+
+```css
+.markdown-rendered .internal-embed {
+  border: 1px solid var(--background-modifier-border);
+  border-left: 3px solid rgba(110, 48, 48, 0.5);
+  background: var(--color-base-10);
+  margin: 1.2em 0;
+  border-radius: 3px;
+}
+
+.markdown-rendered .internal-embed::before {
+  content: "\2767";  /* ❧ */
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  background: var(--background-primary);
+  padding: 0 6px;
+  color: var(--interactive-accent);
+  opacity: 0.2;
+  font-size: 0.8em;
+}
+```
+
+## Blockquotes
+
+```css
+--blockquote-border-color: #6e3030;
+--blockquote-border-thickness: 3px;
+--blockquote-background-color: rgba(120, 70, 35, 0.07);
+--blockquote-font-style: italic;
+--blockquote-color: #c9c2a5;
+```
+
+Hover effect:
+
+```css
+.markdown-rendered blockquote:hover {
+  background-color: rgba(139, 45, 62, 0.08);
+  border-left-color: var(--interactive-accent-hover);
+  transform: translateX(4px);
+}
+```

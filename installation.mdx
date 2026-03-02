@@ -1,0 +1,88 @@
+---
+title: Installation
+description: How to install the Arda theme in Obsidian
+---
+
+# Installing Arda
+
+There are two ways to install the Arda theme: through Obsidian's Community Themes (recommended) or manually from the releases page.
+
+## Installation Methods
+
+<Steps>
+  <Step title="Community Themes (Recommended)">
+    The easiest way to install Arda is directly through Obsidian's built-in theme browser:
+
+    1. Open **Settings** in Obsidian (click the gear icon or press `Cmd/Ctrl + ,`)
+    2. Navigate to **Appearance** in the left sidebar
+    3. Under the **Themes** section, click the **Manage** button
+    4. In the theme browser, search for **Arda**
+    5. Click **Install and use** to apply the theme immediately
+
+    <Tip>
+    Using Community Themes ensures you'll receive automatic update notifications when new versions are released.
+    </Tip>
+  </Step>
+
+  <Step title="Manual Installation">
+    If you prefer to install manually or need a specific version:
+
+    1. Download `theme.css` and `manifest.json` from the [latest release](https://github.com/RepRep666/obsidian-arda/releases/latest)
+    2. Navigate to your vault's `.obsidian/themes/` directory
+       - On macOS/Linux: `[Your Vault]/.obsidian/themes/`
+       - On Windows: `[Your Vault]\.obsidian\themes\`
+    3. Create a new folder named `Arda` inside the themes directory
+    4. Place both downloaded files (`theme.css` and `manifest.json`) into the `Arda` folder
+    5. Open Obsidian Settings → **Appearance**
+    6. Under **Themes**, select **Arda** from the dropdown menu
+
+    <Note>
+    If you don't see a `.obsidian` folder in your vault, make sure hidden files are visible in your file explorer.
+    </Note>
+  </Step>
+
+  <Step title="Verify Installation">
+    After installation, verify that Arda is active:
+
+    - Your interface should display true black backgrounds
+    - Headings should appear in burgundy tones
+    - UI elements should have a medieval, parchment-like aesthetic
+
+    If the theme doesn't appear to be working correctly, try:
+    - Restarting Obsidian
+    - Ensuring dark mode is enabled (Settings → Appearance → Base color scheme → Dark)
+    - Checking that no CSS snippets are conflicting with the theme
+  </Step>
+</Steps>
+
+## Important Notes
+
+<Note>
+**Dark Mode Only**: Arda is designed exclusively for dark mode. The theme will not work properly if Obsidian is set to light mode. Make sure your base color scheme is set to "Dark" in Settings → Appearance.
+</Note>
+
+<Tip>
+**Check for Updates**: If you installed via Community Themes, Obsidian will notify you when updates are available. For manual installations, check the [releases page](https://github.com/RepRep666/obsidian-arda/releases) periodically for new versions.
+</Tip>
+
+## Minimum Requirements
+
+- **Obsidian version**: 1.0.0 or higher
+- **Color mode**: Dark mode
+- **Platform**: Compatible with all platforms (Windows, macOS, Linux, iOS, Android)
+
+## Troubleshooting
+
+If you encounter issues during installation:
+
+- **Theme not appearing in list**: Ensure the folder structure is correct: `.obsidian/themes/Arda/` containing both `theme.css` and `manifest.json`
+- **Theme looks broken**: Confirm dark mode is enabled and try disabling any CSS snippets temporarily
+- **Manual installation not working**: Make sure both files were downloaded completely and aren't corrupted
+
+## Next Steps
+
+Once installed, explore the theme's features:
+
+- Learn about [customization options](/customization/css-variables)
+- Browse the [features overview](/features/overview)
+- Check out the [component reference](/reference/components)

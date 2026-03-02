@@ -1,0 +1,259 @@
+---
+title: "Color system"
+description: "Understanding and customizing the color palette"
+---
+
+Arda uses a systematic color system built on CSS variables, making it easy to customize the entire color scheme while maintaining visual consistency.
+
+## Accent Color
+
+The theme's accent color is defined using HSL (Hue, Saturation, Lightness) values, allowing for easy color adjustments:
+
+```css
+.theme-dark {
+  --accent-h: 349;    /* Hue (0-360) */
+  --accent-s: 51%;    /* Saturation (0-100%) */
+  --accent-l: 36%;    /* Lightness (0-100%) */
+}
+```
+
+**Example: Change accent to blue**
+```css
+.theme-dark {
+  --accent-h: 210;    /* Blue hue */
+  --accent-s: 60%;
+  --accent-l: 45%;
+}
+```
+
+**Example: Change accent to green**
+```css
+.theme-dark {
+  --accent-h: 140;    /* Green hue */
+  --accent-s: 45%;
+  --accent-l: 40%;
+}
+```
+
+## Base Color Scale
+
+Arda uses a stepped color scale from darkest (00) to lightest (100):
+
+```css
+.theme-dark {
+  --color-base-00: #000000;   /* Darkest */
+  --color-base-05: #020201;
+  --color-base-10: #080604;
+  --color-base-20: #100c08;
+  --color-base-25: #16110c;
+  --color-base-30: #1e1610;
+  --color-base-35: #28201a;
+  --color-base-40: #3d2d26;
+  --color-base-50: #56483e;
+  --color-base-60: #8a7e72;
+  --color-base-70: #a89e8f;
+  --color-base-100: #dcd6bc;  /* Lightest */
+}
+```
+
+## Background Colors
+
+Background colors are organized hierarchically:
+
+### Primary Backgrounds
+```css
+.theme-dark {
+  --background-primary: #000000;         /* Main background */
+  --background-primary-alt: #060402;     /* Alternate primary */
+  --background-secondary: #080604;       /* Secondary panels */
+  --background-secondary-alt: #0c0907;   /* Alternate secondary */
+}
+```
+
+### Background Modifiers
+```css
+.theme-dark {
+  --background-modifier-border: #2e2218;          /* Default borders */
+  --background-modifier-border-hover: #4a3628;    /* Borders on hover */
+  --background-modifier-border-focus: #8b2d3e;    /* Borders when focused */
+}
+```
+
+## Text Colors
+
+Text colors range from normal to faint, with accent variations:
+
+```css
+.theme-dark {
+  --text-normal: #ddd7be;          /* Primary text */
+  --text-muted: #8a7e72;           /* Secondary text */
+  --text-faint: #56483e;           /* Tertiary/subtle text */
+  --text-accent: #c08497;          /* Accent colored text */
+  --text-accent-hover: #e0a4b7;    /* Accent text on hover */
+  --text-on-accent: #ddd7be;       /* Text on accent backgrounds */
+}
+```
+
+**Example usage:**
+- Use `--text-normal` for body text
+- Use `--text-muted` for labels and metadata
+- Use `--text-faint` for disabled states or subtle UI
+- Use `--text-accent` for links and highlighted elements
+
+## Interactive Colors
+
+Colors for interactive elements like buttons and links:
+
+```css
+.theme-dark {
+  --interactive-accent: #8b2d3e;         /* Accent UI elements */
+  --interactive-accent-hover: #a53d4f;   /* Accent on hover */
+  --interactive-normal: #100c08;         /* Normal state */
+  --interactive-hover: #1e1610;          /* Hover state */
+}
+```
+
+## Heading Colors
+
+Each heading level has its own color for visual hierarchy:
+
+```css
+.theme-dark {
+  --h1-color: #c08497;   /* Brightest/most prominent */
+  --h2-color: #c08497;
+  --h3-color: #b07585;
+  --h4-color: #a06575;
+  --h5-color: #906070;
+  --h6-color: #806060;   /* Most subtle */
+}
+```
+
+## Link Colors
+
+Different link states and types:
+
+```css
+.theme-dark {
+  --link-color: #c08497;                            /* Default links */
+  --link-color-hover: #e0a4b7;                      /* Links on hover */
+  --link-unresolved-color: #806060;                 /* Unresolved wiki links */
+  --link-unresolved-opacity: 0.7;
+  --link-external-color: #a06575;                   /* External links */
+  --link-external-color-hover: #c08497;             /* External links on hover */
+}
+```
+
+## Tag Colors
+
+```css
+.theme-dark {
+  --tag-color: #c08497;                    /* Tag text color */
+  --tag-color-hover: #e0a4b7;              /* Tag text on hover */
+  --tag-background: rgba(120, 70, 35, 0.12);      /* Tag background */
+  --tag-background-hover: rgba(139, 45, 62, 0.18); /* Tag background on hover */
+  --tag-border-color: #3d2d26;             /* Tag border */
+  --tag-border-color-hover: #6e3030;       /* Tag border on hover */
+}
+```
+
+## Code Colors
+
+Syntax highlighting colors:
+
+```css
+.theme-dark {
+  --code-background: #0c0906;
+  --code-normal: #c9c2a5;        /* Default code text */
+  --code-comment: #5a5a4a;       /* Comments */
+  --code-function: #c08497;      /* Function names */
+  --code-important: #e0a4b7;     /* Important keywords */
+  --code-keyword: #8b2d3e;       /* Language keywords */
+  --code-operator: #8e8e8e;      /* Operators */
+  --code-property: #a06575;      /* Object properties */
+  --code-punctuation: #5a5a4a;   /* Punctuation */
+  --code-string: #9a7a5a;        /* String literals */
+  --code-tag: #b07585;           /* HTML/XML tags */
+  --code-value: #906070;         /* Values */
+}
+```
+
+## Callout Colors
+
+Callouts use RGB values for flexibility with opacity:
+
+```css
+.theme-dark {
+  --callout-default: 139, 45, 62;    /* Use as rgb(var(--callout-default)) */
+  --callout-quote: 192, 132, 151;
+  --callout-tip: 139, 45, 62;
+  --callout-warning: 200, 150, 50;
+  --callout-error: 180, 40, 40;
+  --callout-info: 100, 120, 140;
+  --callout-success: 60, 120, 60;
+}
+```
+
+## Creating a Custom Color Scheme
+
+Here's a complete example creating a cool blue color scheme:
+
+```css
+.theme-dark {
+  /* Change accent to blue */
+  --accent-h: 210;
+  --accent-s: 65%;
+  --accent-l: 50%;
+  
+  /* Update interactive colors */
+  --interactive-accent: #3d7aa8;
+  --interactive-accent-hover: #4d8fc0;
+  
+  /* Update text accent */
+  --text-accent: #6ba3d4;
+  --text-accent-hover: #8fc0e8;
+  
+  /* Update heading colors */
+  --h1-color: #6ba3d4;
+  --h2-color: #6ba3d4;
+  --h3-color: #5a92c3;
+  --h4-color: #4a81b2;
+  --h5-color: #3a70a1;
+  --h6-color: #2a6090;
+  
+  /* Update link colors */
+  --link-color: #6ba3d4;
+  --link-color-hover: #8fc0e8;
+  
+  /* Update borders */
+  --background-modifier-border-focus: #3d7aa8;
+}
+```
+
+## Warm Color Scheme Example
+
+For a warm, earthy palette:
+
+```css
+.theme-dark {
+  /* Warm orange accent */
+  --accent-h: 30;
+  --accent-s: 60%;
+  --accent-l: 45%;
+  
+  /* Update interactive colors */
+  --interactive-accent: #a8623d;
+  --interactive-accent-hover: #c0754d;
+  
+  /* Update text accent */
+  --text-accent: #d49a6b;
+  --text-accent-hover: #e8b48f;
+  
+  /* Update heading colors */
+  --h1-color: #d49a6b;
+  --h2-color: #d49a6b;
+  --h3-color: #c3895a;
+  --h4-color: #b27849;
+  --h5-color: #a16738;
+  --h6-color: #905627;
+}
+```
